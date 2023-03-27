@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">'
+<!--mapper어노테이션이 붙은 Repository파일 명시-->
+<mapper namespace="com.example.board.repository.AuthorMapper">
+
+<!--    resultType에 풀경로 명시-->
+    <select id="findAll" resultType="com.example.board.domain.Author">
+        select * from author;
+    </select>
+
+    <select id="findById" resultType="com.example.board.domain.Author" parameterType="Long">
+        select * from author where  id = #{id};
+    </select>
+
+
+    <select id="findByEmail" resultType="com.example.board.domain.Author" parameterType="String">
+        select * from author where  email = #{email};
+    </select>
+
+    <insert id="save" >
+        INSERT author (name, email, password, role) VALUES (#{name}, #{email}, #{password}, #{role})
+    </insert>
+
+</mapper>
